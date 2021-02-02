@@ -1,0 +1,47 @@
+From 43ffe7c79eb0a3888ced53afb445838f1b22fea1 Mon Sep 17 00:00:00 2001
+From: Leonard Berresheim <s0556126@htw-berlin.de>
+Date: Tue, 2 Feb 2021 17:38:19 +0100
+Subject: [PATCH] =?UTF-8?q?stm32mp157c-dk2=20dts:=20add=20support=20for=20?=
+ =?UTF-8?q?LCD-TFT=20and=20touch=E2=80=8B?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Leonard Berresheim <s0556126@htw-berlin.de>
+---
+ arch/arm/boot/dts/stm32mp157c-dk2.dts | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
+
+diff --git a/arch/arm/boot/dts/stm32mp157c-dk2.dts b/arch/arm/boot/dts/stm32mp157c-dk2.dts
+index 1fa4d7fa8cde..0867d862f823 100644
+--- a/arch/arm/boot/dts/stm32mp157c-dk2.dts
++++ b/arch/arm/boot/dts/stm32mp157c-dk2.dts
+@@ -124,3 +124,25 @@
+ 	};
+ };
+ 
++&i2c1 {
++        touchscreen@2a {
++                compatible = "focaltech,ft6236";
++                reg = <0x2a>;
++                interrupts = <2 2>;
++                interrupt-parent = <&gpiof>;
++                interrupt-controller;
++                touchscreen-size-x = <480>;
++                touchscreen-size-y = <800>;
++                status = "okay";
++        };
++        touchscreen@38 {
++                compatible = "focaltech,ft6236";
++                reg = <0x2a>;
++                interrupts = <2 2>;
++                interrupt-parent = <&gpiof>;
++                interrupt-controller;
++                touchscreen-size-x = <480>;
++                touchscreen-size-y = <800>;
++                status = "okay";
++        };
++};
+-- 
+2.25.1
+
